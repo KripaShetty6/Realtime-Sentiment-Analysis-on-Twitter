@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# My classifier
+my_classifier.*
+
+# Ignore .csv files
+*.csv
