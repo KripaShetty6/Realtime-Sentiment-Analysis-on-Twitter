@@ -15,7 +15,7 @@ def getTweetsRawData( fileName ):
     #print type(reader)
     for row in reader:
         print queryTerms
-        print queryTerms[(row[0]).lower()]
+#        print queryTerms[(row[0]).lower()]
         print row
         tweets.append( [row[4], row[1], row[0], queryTerms[(row[0]).lower()] ] )
     # treat neutral and irrelevant the same

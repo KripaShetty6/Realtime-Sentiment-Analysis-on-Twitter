@@ -11,9 +11,9 @@ Data file format has 6 fields:
 5 - the text of the tweet (Lyx is cool)
 
 """
-
-FULLDATA = '/home/yashwanth/python/Realtime-Sentiment-Analysis-on-Twitter/stanfordcorpus/training.1600000.processed.noemoticon.csv'
-TESTDATA = '/home/yashwanth/python/Realtime-Sentiment-Analysis-on-Twitter/stanfordcorpus/training.1600000.processed.noemoticon.csv'
+import os
+FULLDATA = os.path.abspath('stanfordcorpus/training.1600000.processed.noemoticon.csv')
+TESTDATA = FULLDATA
 
 POLARITY= 0 # in [0,5]
 TWID    = 1
@@ -70,6 +70,7 @@ def sampleCSV( in_file, out_file, K=100 ):
 
     fp.close()
     fp2.close()
+
 
     return 0
 
@@ -131,8 +132,8 @@ def countlines( filename ):
             count+=1
     return count
 
-getAllQueries( '/home/yashwanth/python/Realtime-Sentiment-Analysis-on-Twitter/stanfordcorpus/testdata.manual.2009.06.14.csv' )
-getAllQueries( '/home/yashwanth/python/Realtime-Sentiment-Analysis-on-Twitter/stanfordcorpus/training.1600000.processed.noemoticon.csv' )
+getAllQueries( os.path.abspath('stanfordcorpus/testdata.manual.2009.06.14.csv'))
+getAllQueries( os.path.abspath('stanfordcorpus/training.1600000.processed.noemoticon.csv'))
 
 randomSampleCSV(FULLDATA, FULLDATA+'.sample.csv')
 sampleCSV(TESTDATA, TESTDATA+'.sample.csv')
