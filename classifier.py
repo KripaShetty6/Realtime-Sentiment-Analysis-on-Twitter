@@ -403,9 +403,9 @@ def main(argv) :
     if (len( fileprefix )==0 or len( classifierNames )==0 or len( methodNames )==0 or len( ngramVals )==0 or len( negtnVals )==0 ):
         print __usage__
         return
+    import os
     
-    tweets1 = sanderstwitter02.getTweetsRawData('/home/yashwanth/python/Realtime-Sentiment-Analysis-on-Twitter/sanderstwitter02/sentiment.csv')
-    #tweets2 = stanfordcorpus.getNormalisedTweets('stanfordcorpus/'+stanfordcorpus.FULLDATA+'.5000.norm.csv')
+    tweets1 = sanderstwitter02.getTweetsRawData(os.path.abspath('sanderstwitter02/sentiment.csv'))  #tweets2 = stanfordcorpus.getNormalisedTweets('stanfordcorpus/'+stanfordcorpus.FULLDATA+'.5000.norm.csv')
     tweets2 = stanfordcorpus.getNormalisedTweets(stanfordcorpus.FULLDATA + '.5000.norm.csv')
     #random.shuffle(tweets1)
     #random.shuffle(tweets2)
