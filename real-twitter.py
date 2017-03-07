@@ -1,5 +1,5 @@
 from twython import TwythonStreamer
-
+print ("########################################Started")
 class TweetStreamer(TwythonStreamer):
     def on_success(self, data):
         if 'text' in data:
@@ -19,4 +19,4 @@ access_token_secret = 'pNRIJAYwFoQHXuHtCgrkNEz08P3K9TM66K8j0p2UaKs9d'
 streamer = TweetStreamer(consumer_key, consumer_secret,
                          access_token, access_token_secret)
 
-streamer.statuses.filter(track = 'yashwanth')
+streamer.statuses.filter(track = 'india')

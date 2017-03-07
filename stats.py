@@ -1,7 +1,7 @@
 #@uthor: Ayush Pareek
 import sys, time, os
 import random, re, csv, collections
-import nltk, pylab, numpy
+import nltk, numpy
 
 import preprocessing
 
