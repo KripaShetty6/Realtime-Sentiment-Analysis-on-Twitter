@@ -21,7 +21,6 @@ LIST_CLASSIFIERS = [ 'NaiveBayesClassifier', 'MaxentClassifier', 'DecisionTreeCl
 LIST_METHODS = ['1step', '2step']
 
 def getTrainingAndTestData(tweets, K, k, method, feature_set):
-
     add_ngram_feat = feature_set.get('ngram', 1)
     add_negtn_feat = feature_set.get('negtn', False)
 
@@ -65,16 +64,16 @@ def getTrainingAndTestData(tweets, K, k, method, feature_set):
             words_tri  = [ ','.join(map(str,tg)) for tg in nltk.trigrams(words) ]
             n_grams_fd.update( words_tri )
 
-    sys.stderr.write( '\nlen( '+ str(add_ngram_feat)+'grams ) = '+str(len( unigrams_fd.keys() )) )
+    # sys.stderr.write( '\nlen( '+ str(add_ngram_feat)+'grams ) = '+str(len( unigrams_fd.keys() )) )
 
     #unigrams_sorted = nltk.FreqDist(unigrams).keys()
     unigrams_sorted = unigrams_fd.keys()
     #bigrams_sorted = nltk.FreqDist(bigrams).keys()
     #trigrams_sorted = nltk.FreqDist(trigrams).keys()
     if add_ngram_feat > 1 :
-        sys.stderr.write( '\nlen( n_grams ) = '+str(len( n_grams_fd )) )
+        # sys.stderr.write( '\nlen( n_grams ) = '+str(len( n_grams_fd )) )
         ngrams_sorted = [ k for (k,v) in n_grams_fd.items() if v>1]
-        sys.stderr.write( '\nlen( ngrams_sorted ) = '+str(len( ngrams_sorted )) )
+        # sys.stderr.write( '\nlen( ngrams_sorted ) = '+str(len( ngrams_sorted )) )
 
     def get_word_features(words):
         bag = {}
@@ -150,7 +149,7 @@ def getTrainingAndTestData(tweets, K, k, method, feature_set):
             negation_features = get_negation_features(words)
             features.update( negation_features )
  
-        sys.stderr.write( '\rfeatures extracted for ' + str(extract_features.count) + ' tweets' )
+        # sys.stderr.write( '\rfeatures extracted for ' + str(extract_features.count) + ' tweets' )
         return features
 
     extract_features.count = 0;

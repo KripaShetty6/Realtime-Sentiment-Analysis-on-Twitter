@@ -1,9 +1,14 @@
 from twython import TwythonStreamer
+
+from yash_classifier import realtimeAnalyse
+
 print ("########################################Started")
 class TweetStreamer(TwythonStreamer):
     def on_success(self, data):
         if 'text' in data:
-            print (data['text'].encode('utf-8'))
+            # print (data['text'].encode('utf-8'))
+            realtimeAnalyse(data['text'].encode('utf-8'))
+
 
     def on_error(self, status_code, data):
         print (status_code)
@@ -19,4 +24,5 @@ access_token_secret = 'pNRIJAYwFoQHXuHtCgrkNEz08P3K9TM66K8j0p2UaKs9d'
 streamer = TweetStreamer(consumer_key, consumer_secret,
                          access_token, access_token_secret)
 
-streamer.statuses.filter(track = 'india')
+# change the word here to analyse
+streamer.statuses.filter(track = 'Trump')
