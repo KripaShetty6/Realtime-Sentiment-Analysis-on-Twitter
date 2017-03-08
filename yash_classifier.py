@@ -4,13 +4,13 @@ from termcolor import colored
 
 from classifier import getTrainingAndTestData
 
+classifier = nltk.classify.NaiveBayesClassifier
+f = open('my_classifier.pickle0.738619912508', 'rb')
+classifier = pickle.load(f)
+f.close()
 
-def realtimeAnalyse(tweet):
-    global classifier
-    classifier = nltk.classify.NaiveBayesClassifier
-    f = open('my_classifier.pickle0.738619912508', 'rb')
-    classifier = pickle.load(f)
-    f.close()
+def realtimeAnalyse(tweet, classifier):
+
     # from classifier.py main function
     feature_set = {'ngram': 1, 'negtn': False}
     tweets = [[tweet, 'neg', 'NO_QUERY', []]]
@@ -25,4 +25,6 @@ def realtimeAnalyse(tweet):
     else:
         print colored(tweet, 'blue')
 
-# realtimeAnalyse("this is awesome")
+# realtimeAnalyse("this is :(", classifier)
+# realtimeAnalyse("this is great :)", classifier)
+# realtimeAnalyse("this movie is xD", classifier)

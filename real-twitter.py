@@ -1,13 +1,21 @@
+import nltk
+import pickle
 from twython import TwythonStreamer
 
 from yash_classifier import realtimeAnalyse
 
-print ("########################################Started")
+print ("########################################Loading classifier###########")
+classifier = nltk.classify.NaiveBayesClassifier
+f = open('my_classifier.pickle0.738619912508', 'rb')
+classifier = pickle.load(f)
+f.close()
+
+print ("########################################Starting Analysis############")
 class TweetStreamer(TwythonStreamer):
     def on_success(self, data):
         if 'text' in data:
             # print (data['text'].encode('utf-8'))
-            realtimeAnalyse(data['text'].encode('utf-8'))
+            realtimeAnalyse(data['text'].encode('utf-8'), classifier)
 
 
     def on_error(self, status_code, data):
