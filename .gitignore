@@ -93,3 +93,6 @@ my_classifier.*
 
 # Ignore .csv files
 *.csv
+
+# Ignore idea, IDE files
+.idea/
